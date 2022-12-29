@@ -1,0 +1,45 @@
+# SQL data warehouse schema diagram.
+
+terminals
+-
+terminal_id PK varchar
+terminal_type varchar
+terminal_city varchar
+terminal_adress varchar
+
+passport_blacklist
+-
+passport_num varchar
+entry_dt date
+
+transactions
+-
+trans_id varchar
+trans_date date
+card_num varchar FK >- cards.card_num
+oper_type varchar
+amt decimal
+oper_result varchar
+terminal varchar FK >- terminals.terminal_id
+
+cards
+-
+card_num PK varchar
+account_num varchar FK >- accounts.account_num
+
+accounts
+-
+account_num PK varchar
+valid_to date
+client varchar FK >- clients.client_id
+
+clients
+-
+client_id PK varchar
+last_name varchar
+first_name varchar
+patronymic varchar
+date_of_birth date
+passport_num varchar
+passport_valid_to date
+phone varchar
